@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-yarn lint:js && yarn format && git add .
+yarn run lint-staged
+# If do not use lint-staged, use below
+# yarn lint:js && yarn format && git add .
