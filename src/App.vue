@@ -2,5 +2,5 @@
 import BaseButton from "./components/BaseButton.vue";
 </script>
 <template>
-	<BaseButton msg="msg" />
+	<BaseButton color="secondary" size="lg">Button</BaseButton>
 </template>

@@ -1,38 +1,54 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { tv } from "tailwind-variants";
 
-defineProps<{ msg: string }>();
+const props = defineProps({
+	color: {
+		validator(value: string) {
+			// The value must match one of these strings
+			return ["primary", "secondary"].includes(value);
+		},
+		default: "primary",
+	},
+	size: {
+		validator(value: string) {
+			// The value must match one of these strings
+			return ["sm", "md", "lg"].includes(value);
+		},
+		default: "md",
+	},
+});
 
-const count = ref(0);
+const button = tv({
+	base: "font-medium bg-blue-500 text-white rounded-full active:opacity-80",
+	variants: {
+		color: {
+			primary: "bg-blue-500 text-white",
+			secondary: "bg-purple-500 text-white",
+		},
+		size: {
+			sm: "text-sm",
+			md: "text-base",
+			lg: "px-4 py-3 text-lg",
+		},
+	},
+	compoundVariants: [
+		{
+			size: ["sm", "md"],
+			class: "px-3 py-1",
+		},
+	],
+});
+
+const buttonArgs = {
+	size: props.size,
+	color: props.color,
+};
+
+const buttonClass = button(buttonArgs);
 </script>
 
 <template>
-	<h1>{{ msg }}</h1>
-
-	<div class="card">
-		<button type="button" @click="count++">count is {{ count }}</button>
-		<p>
-			Edit
-			<code>components/HelloWorld.vue</code> to test HMR
-		</p>
-	</div>
-	<p>Hello! This is a test.</p>
-	<p>
-		Check out
-		<a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-			>create-vue</a
-		>, the official Vue + Vite starter
-	</p>
-	<p>
-		Install
-		<a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-		in your IDE for a better DX
-	</p>
-	<p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+	<button :class="buttonClass">
+		<slot></slot>
+	</button>
 </template>
-
-<style scoped>
-.read-the-docs {
-	color: #888;
-}
-</style>
