@@ -22,17 +22,12 @@ jobs:
           node-version: 20
 
       - name: Enable Corepack before setting up Node
-        shell: bash
         run: corepack enable
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: yarn
-
-      - name: Clear Yarn Cache
-        run: yarn cache clean
-
 
       - name: Install dependencies
         run: yarn install --immutable --immutable-cache --check-cache
