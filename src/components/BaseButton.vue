@@ -1,22 +1,14 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { tv } from "tailwind-variants";
 
-const props = defineProps({
-	color: {
-		validator(value: string) {
-			// The value must match one of these strings
-			return ["primary", "secondary"].includes(value);
-		},
-		default: "primary",
-	},
-	size: {
-		validator(value: string) {
-			// The value must match one of these strings
-			return ["sm", "md", "lg"].includes(value);
-		},
-		default: "md",
-	},
-});
+const props = withDefaults(
+	defineProps<{
+		color?: "primary" | "secondary";
+		size?: "sm" | "md" | "lg";
+	}>(),
+	{ color: "primary", size: "md" },
+);
 
 const button = tv({
 	base: "font-medium bg-blue-500 text-white rounded-full active:opacity-80",
@@ -39,12 +31,12 @@ const button = tv({
 	],
 });
 
-const buttonArgs = {
-	size: props.size,
-	color: props.color,
-};
-
-const buttonClass = button(buttonArgs);
+const buttonClass = computed(() =>
+	button({
+		color: props.color,
+		size: props.size,
+	}),
+);
 </script>
 
 <template>
