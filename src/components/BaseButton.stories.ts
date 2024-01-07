@@ -7,8 +7,15 @@ const meta = {
 	component: BaseButton,
 	tags: ["autodocs"],
 	argTypes: {
-		color: { control: "select", options: ["primary", "secondary"] },
-		size: { control: "select", options: ["sm", "md", "lg"] },
+		color: {
+			control: "select",
+			options: ["primary", "secondary", "danger", "success", "info"],
+		},
+		size: { control: "select", options: ["sm", "md", "lg", "xl"] },
+		type: {
+			control: "select",
+			options: ["solid", "light", "outline", "ghost"],
+		},
 	},
 } satisfies Meta<typeof BaseButton>;
 
@@ -22,12 +29,13 @@ export const Example: Story = {
 			return { args };
 		},
 		template:
-			'<BaseButton :color="args.color" :size="args.size">{{ args.default }}</BaseButton>',
+			'<BaseButton :color="args.color" :size="args.size" :type="args.type">{{ args.default }}</BaseButton>',
 	}),
 	args: {
 		// setting default values for the args
 		color: "primary",
 		size: "md",
+		type: "solid",
 		default: "Button",
 	},
 };
