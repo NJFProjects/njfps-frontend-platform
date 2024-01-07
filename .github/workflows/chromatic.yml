@@ -22,6 +22,7 @@ jobs:
           node-version: 20
 
       - name: Enable Corepack before setting up Node
+        shell: bash
         run: corepack enable
 
       - uses: actions/setup-node@v4
