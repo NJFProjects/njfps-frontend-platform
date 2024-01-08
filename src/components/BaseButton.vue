@@ -1,24 +1,33 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { tv } from "tailwind-variants";
+import AppIcon from "./AppIcon.vue";
 
 const props = withDefaults(
 	defineProps<{
 		color?: "primary" | "primarySelected" | "danger" | "success" | "info";
 		size?: "sm" | "md" | "lg" | "xl";
 		type?: "solid" | "light" | "outline" | "underline" | "ghost";
+		iconLeft?: string;
+		iconRight?: string;
+		iconLeftType?: "solid" | "outline";
+		iconRightType?: "solid" | "outline";
 		hasPaddingX?: boolean;
 	}>(),
 	{
 		color: "primary",
 		size: "md",
 		type: "solid",
+		iconLeft: "",
+		iconRight: "",
+		iconLeftType: "solid",
+		iconRightType: "solid",
 		hasPaddingX: true,
 	},
 );
 
 const baseButton = tv({
-	base: "font-bold active:opacity-80",
+	base: "font-bold active:opacity-8 inline-flex justify-center items-center gap-2",
 	variants: {
 		size: {
 			sm: "text-sm",
@@ -187,10 +196,42 @@ const buttonClass = computed(() => {
 		});
 	}
 });
+
+const baseIcon = tv({
+	variants: {
+		size: {
+			sm: "w-3.5 h-3.5",
+			md: "w-4 h-4",
+			lg: "w-5 h-5",
+			xl: "w-6 h-6",
+		},
+	},
+});
+
+const iconClass = computed(() => {
+	return baseIcon({
+		size: props.size,
+	});
+});
 </script>
 
 <template>
 	<button :class="buttonClass">
+		<AppIcon
+			v-if="iconLeft"
+			:icon-name="iconLeft"
+			:icon-type="iconLeftType"
+			:class="iconClass"
+		/>
 		<slot></slot>
+		<!-- <div>{{ iconLeft }}</div>
+		<div>{{ iconLeftType }}</div>
+		<div>{{ iconClass }}</div> -->
+		<AppIcon
+			v-if="iconRight"
+			:icon-name="iconRight"
+			:icon-type="iconRightType"
+			:class="iconClass"
+		/>
 	</button>
 </template>
