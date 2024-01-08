@@ -38,7 +38,7 @@ export const Example: Story = {
 			return { args };
 		},
 		template:
-			'<BaseButton :color="args.color" :size="args.size" :type="args.type" :hasPaddingX="args.hasPaddingX" :iconLeft="args.iconLeft" :iconLeftType="args.iconLeftType" :iconRight="args.iconRight" :iconRightType="args.iconRightType">{{ args.default }}</BaseButton>',
+			'<BaseButton :color="args.color" :size="args.size" :type="args.type" :has-paddingX="args.hasPaddingX" :icon-left="args.iconLeft" :icon-left-type="args.iconLeftType" :icon-right="args.iconRight" :icon-right-type="args.iconRightType">{{ args.default }}</BaseButton>',
 	}),
 	args: {
 		// setting default values for the args
