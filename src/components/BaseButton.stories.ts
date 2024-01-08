@@ -23,6 +23,8 @@ const meta = {
 			control: "select",
 			options: ["solid", "light", "outline", "underline", "ghost"],
 		},
+		iconLeftType: { control: "select", options: ["solid", "outline"] },
+		iconRightType: { control: "select", options: ["solid", "outline"] },
 	},
 } satisfies Meta<typeof BaseButton>;
 
@@ -36,13 +38,17 @@ export const Example: Story = {
 			return { args };
 		},
 		template:
-			'<BaseButton :color="args.color" :size="args.size" :type="args.type" :hasPaddingX="args.hasPaddingX">{{ args.default }}</BaseButton>',
+			'<BaseButton :color="args.color" :size="args.size" :type="args.type" :hasPaddingX="args.hasPaddingX" :iconLeft="args.iconLeft" :iconLeftType="args.iconLeftType" :iconRight="args.iconRight" :iconRightType="args.iconRightType">{{ args.default }}</BaseButton>',
 	}),
 	args: {
 		// setting default values for the args
 		color: "primary",
 		size: "md",
 		type: "solid",
+		iconLeft: "DocumentPlusIcon",
+		iconRight: "ArrowLongRightIcon",
+		iconLeftType: "outline",
+		iconRightType: "solid",
 		hasPaddingX: true,
 		default: "Button",
 	},
