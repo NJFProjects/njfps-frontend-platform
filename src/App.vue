@@ -1,7 +1,18 @@
 <script setup lang="ts">
 import BaseButton from "./components/BaseButton.vue";
+import ProfileThumbnail from "./components/ProfileThumbnail.vue";
+
+const profileThumbnailArgs = {
+	size: "xxl",
+	showDropList: true,
+	profileImgURL:
+		"https://i.pinimg.com/564x/5b/a6/a5/5ba6a59f0c45c05c0ea75d8824c136b5.jpg",
+};
 </script>
 <template>
+	<div>
+		<ProfileThumbnail v-bind="profileThumbnailArgs" />
+	</div>
 	<div>
 		<BaseButton color="primary" size="sm" icon-left="BuildingOffice2Icon">
 			Button
