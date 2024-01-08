@@ -9,12 +9,19 @@ const meta = {
 	argTypes: {
 		color: {
 			control: "select",
-			options: ["primary", "secondary", "danger", "success", "info"],
+			options: [
+				"primary",
+				"primarySelected",
+				"secondary",
+				"danger",
+				"success",
+				"info",
+			],
 		},
 		size: { control: "select", options: ["sm", "md", "lg", "xl"] },
 		type: {
 			control: "select",
-			options: ["solid", "light", "outline", "ghost"],
+			options: ["solid", "light", "outline", "underline", "ghost"],
 		},
 	},
 } satisfies Meta<typeof BaseButton>;
@@ -29,13 +36,14 @@ export const Example: Story = {
 			return { args };
 		},
 		template:
-			'<BaseButton :color="args.color" :size="args.size" :type="args.type">{{ args.default }}</BaseButton>',
+			'<BaseButton :color="args.color" :size="args.size" :type="args.type" :hasPaddingX="args.hasPaddingX">{{ args.default }}</BaseButton>',
 	}),
 	args: {
 		// setting default values for the args
 		color: "primary",
 		size: "md",
 		type: "solid",
+		hasPaddingX: true,
 		default: "Button",
 	},
 };
