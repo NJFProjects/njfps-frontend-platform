@@ -39,12 +39,12 @@ const profileThumbnail = tv({
 			},
 			xl: {
 				profileClass: "w-14 h-14",
-				userNameClass: "text-2xl pl-2",
+				userNameClass: "text-2xl pl-3",
 				dropListClass: "w-5 h-5",
 			},
 			xxl: {
 				profileClass: "w-16 h-16",
-				userNameClass: "text-3xl pl-2",
+				userNameClass: "text-3xl pl-4",
 				dropListClass: "w-6 h-6",
 			},
 		},
