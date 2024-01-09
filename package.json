@@ -29,6 +29,7 @@
 		"*.{js,jsx,tsx,md,html,css}": "prettier --write"
 	},
 	"dependencies": {
+		"@heroicons/vue": "^2.1.1",
 		"pinia": "^2.1.7",
 		"tailwind-variants": "^0.1.20",
 		"vue": "^3.2.45",
@@ -75,8 +76,5 @@
 	},
 	"packageManager": "yarn@4.0.2",
 	"readme": "ERROR: No README data found!",
-	"_id": "njfps-frontend-platform@0.0.0",
-	"dependenciesMeta:": {
-		"unplugged": false
-	}
+	"_id": "njfps-frontend-platform@0.0.0"
 }

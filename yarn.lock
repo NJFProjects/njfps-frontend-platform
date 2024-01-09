@@ -1881,6 +1881,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@heroicons/vue@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "@heroicons/vue@npm:2.1.1"
+  peerDependencies:
+    vue: ">= 3"
+  checksum: b80c14291a6406c794697b9a59c1c8a6f847c8ddd87044a7bdd7333250657de4fb2b5bbe00ce658580bfec2d55e033cc212986d8a0052f9da894f979436a550c
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.13":
   version: 0.11.13
   resolution: "@humanwhocodes/config-array@npm:0.11.13"
@@ -9255,6 +9264,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "njfps-frontend-platform@workspace:."
   dependencies:
+    "@heroicons/vue": "npm:^2.1.1"
     "@storybook/addon-essentials": "npm:^7.6.7"
     "@storybook/addon-interactions": "npm:^7.6.7"
     "@storybook/addon-links": "npm:^7.6.7"
