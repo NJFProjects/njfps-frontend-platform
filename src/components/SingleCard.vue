@@ -38,7 +38,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 <template>
 	<div
-		class="text-cyan-900 flex h-[20rem] w-[20rem] flex-col gap-3 overflow-hidden rounded-2xl shadow-lg"
+		class="text-cyan-900 bg-white flex h-[20rem] w-[20rem] flex-col gap-3 overflow-hidden rounded-2xl shadow-lg"
 	>
 		<img
 			v-if="props.cardImgURL"
