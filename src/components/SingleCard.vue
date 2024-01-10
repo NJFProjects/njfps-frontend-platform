@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AppIcon from "./AppIcon.vue";
-import ReactionIcon from "./ReactionIcon.vue";
+import SingleCardIconStack from "./SingleCardIconStack.vue";
 import ProfileThumbnail from "./ProfileThumbnail.vue";
 
 export interface Props {
@@ -90,33 +90,14 @@ const props = withDefaults(defineProps<Props>(), {
 				</div>
 			</div>
 		</div>
-		<div
-			class="border-gray-200 text-gray-400 flex items-end justify-end gap-4 border-t border-solid px-5 pb-1.5 pt-2"
-		>
-			<div class="flex items-center gap-1">
-				<ReactionIcon
-					icon-name="HeartIcon"
-					:status-activated="props.hasLike"
-					:status-amount="props.likeAmount"
-					class="h-4 w-4"
-				/>
-			</div>
-			<div class="flex items-center gap-1">
-				<ReactionIcon
-					icon-name="EyeIcon"
-					:status-activated="props.hasWatch"
-					:status-amount="props.watchAmount"
-					class="h-4 w-4"
-				/>
-			</div>
-			<div class="flex items-center gap-1">
-				<ReactionIcon
-					icon-name="BookmarkIcon"
-					:status-activated="props.hasBookmark"
-					:status-amount="props.bookmarkAmount"
-					class="h-4 w-4"
-				/>
-			</div>
-		</div>
+		<SingleCardIconStack
+			:like-amount="props.likeAmount"
+			:watch-amount="props.watchAmount"
+			:bookmark-amount="props.bookmarkAmount"
+			:has-like="props.hasLike"
+			:has-watch="props.hasWatch"
+			:has-bookmark="props.hasBookmark"
+			class="border-gray-200 text-gray-400 items-end justify-end border-t border-solid px-5 pb-1.5 pt-2"
+		/>
 	</div>
 </template>
