@@ -86,22 +86,22 @@ const baseButton = tv({
 
 const solidButton = tv({
 	extend: baseButton,
-	base: "rounded",
+	base: ["rounded", "border-solid", "border-2"],
 	variants: {
 		color: {
-			primary: "bg-cyan-900 text-white",
-			primarySelected: "bg-cyan-600 text-white",
-			secondary: "bg-gray-300 text-gray-900",
-			danger: "bg-red-500 text-white",
-			success: "bg-green-500 text-white",
-			info: "bg-blue-500 text-white",
+			primary: "bg-cyan-900 border-cyan-900 text-white",
+			primarySelected: "bg-cyan-600 border-cyan-600 text-white",
+			secondary: "bg-gray-300 border-gray-300 text-gray-900",
+			danger: "bg-red-500 border-red-500 text-white",
+			success: "bg-green-500 border-green-500 text-white",
+			info: "bg-blue-500 border-blue-500 text-white",
 		},
 	},
 });
 
 const lightButton = tv({
 	extend: baseButton,
-	base: ["rounded", "bg-white"],
+	base: ["rounded", "bg-white", "border-solid", "border-2", "border-white"],
 	variants: {
 		color: {
 			primary: "text-cyan-900",
