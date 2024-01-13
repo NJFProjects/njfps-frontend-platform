@@ -28,9 +28,7 @@ const logoType = computed(() => {
 	}
 });
 
-const imgSrc = computed(
-	() => `src/assets/logo/${bgType.value}-${logoType.value}.svg`,
-);
+const imgSrc = computed(() => `/logo/${bgType.value}-${logoType.value}.svg`);
 </script>
 
 <template>
