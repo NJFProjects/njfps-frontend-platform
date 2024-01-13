@@ -4,5 +4,5 @@ import HomePage from "./views/HomePage.vue";
 </script>
 <template>
 	<HeaderBase />
-	<HomePage card-amount-in-stack="5" />
+	<HomePage :card-amount-in-stack="5" />
 </template>

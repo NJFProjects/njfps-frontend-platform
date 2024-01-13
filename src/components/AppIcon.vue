@@ -1,25 +1,23 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import * as heroIconsSolid from "@heroicons/vue/24/solid";
-import * as heroIconsOutline from "@heroicons/vue/24/outline";
+import { IconObject } from "../utils/icon-import";
 
-const heroIcons = {
-	solid: heroIconsSolid,
-	outline: heroIconsOutline,
-};
-
-const props = withDefaults(
-	defineProps<{
-		iconName?: string;
-		iconType?: "solid" | "outline";
-	}>(),
-	{
-		iconName: "SwatchIcon",
-		iconType: "outline",
+const props = defineProps({
+	iconName: {
+		type: String,
+		default: "SwatchIcon",
 	},
-);
+	iconType: {
+		type: String,
+		validator(value: string) {
+			// The value must match one of these strings
+			return ["solid", "outline"].includes(value);
+		},
+		default: "outline",
+	},
+});
 
-const SelectedIcon = computed(() => heroIcons[props.iconType][props.iconName]);
+const SelectedIcon = computed(() => IconObject[props.iconType][props.iconName]);
 </script>
 
 <template>
