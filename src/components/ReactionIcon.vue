@@ -11,19 +11,34 @@ const props = withDefaults(
 		iconName?: string;
 		statusActivated?: boolean;
 		statusAmount?: number;
+		reactionEnabled?: boolean;
 	}>(),
 	{
 		iconName: "SwatchIcon",
 		statusActivated: false,
 		statusAmount: 0,
+		reactionEnabled: true,
 	},
 );
 
 const statusActivatedLocal = ref(props.statusActivated);
 const statusAmountLocal = ref(props.statusAmount);
 
+function assignIconStatus(): string {
+	if (statusActivatedLocal.value) {
+		return "solid";
+	} else {
+		return "outline";
+	}
+}
+
+let iconType: string = assignIconStatus();
+
 function mutateReactionStatus() {
 	statusActivatedLocal.value = !statusActivatedLocal.value;
+
+	// Assign Icon Status
+	iconType = assignIconStatus();
 	if (statusActivatedLocal.value) {
 		statusAmountLocal.value = statusAmountLocal.value + 1;
 	} else {
@@ -37,9 +52,9 @@ function mutateReactionStatus() {
 <template>
 	<div class="flex items-center gap-1">
 		<AppIcon
-			v-if="statusActivatedLocal"
+			v-if="reactionEnabled"
 			:icon-name="props.iconName"
-			icon-type="solid"
+			:icon-type="iconType"
 			class="cursor-pointer"
 			v-bind="$attrs"
 			@click="mutateReactionStatus()"
@@ -47,10 +62,8 @@ function mutateReactionStatus() {
 		<AppIcon
 			v-else
 			:icon-name="props.iconName"
-			icon-type="outline"
-			class="cursor-pointer"
+			:icon-type="iconType"
 			v-bind="$attrs"
-			@click="mutateReactionStatus()"
 		/>
 		<div class="text-sm">{{ statusAmountLocal }}</div>
 	</div>
