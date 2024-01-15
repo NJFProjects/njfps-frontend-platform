@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import AuthPageBase from "./AuthPageBase.vue";
-import DynamicForm from "../../components/DynamicFormBase.vue";
+import DynamicFormBase from "../../components/DynamicFormBase.vue";
 import * as Yup from "yup";
 
 const sentEmail = ref(false);
@@ -36,7 +36,7 @@ const onSubmit = (payload: string) => {
 	<AuthPageBase v-else>
 		<div class="flex flex-col gap-4 self-stretch">
 			<div class="text-cyan-900 text-4xl font-bold">Register</div>
-			<DynamicForm :schema="formSchema" @submit="onSubmit" />
+			<DynamicFormBase :schema="formSchema" @submit="onSubmit" />
 		</div>
 	</AuthPageBase>
 </template>

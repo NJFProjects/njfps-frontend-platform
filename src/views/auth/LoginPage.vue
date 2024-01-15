@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AuthPageBase from "./AuthPageBase.vue";
-import DynamicForm from "../../components/DynamicFormBase.vue";
+import DynamicFormBase from "../../components/DynamicFormBase.vue";
 import * as Yup from "yup";
 
 const formSchema = {
@@ -23,7 +23,7 @@ const formSchema = {
 	<AuthPageBase>
 		<div class="flex flex-col gap-4 self-stretch">
 			<div class="text-cyan-900 text-4xl font-bold">Login</div>
-			<DynamicForm :schema="formSchema" />
+			<DynamicFormBase :schema="formSchema" />
 		</div>
 	</AuthPageBase>
 </template>

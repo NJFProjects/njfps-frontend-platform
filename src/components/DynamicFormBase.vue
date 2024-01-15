@@ -10,7 +10,7 @@ interface PropsType {
 	schema: {
 		fields: {
 			name: string;
-			type: string;
+			type?: string;
 			label?: string;
 			children?: string;
 			msg?: string;
@@ -55,10 +55,9 @@ const onSubmit = (values: unknown) => {
 					class="field-base flex self-stretch py-3 pl-3 pr-11"
 					:class="{
 						'border-pink-500 text-pink-600 focus:border-pink-500 focus:ring-pink-500':
-							!meta.valid,
+							!meta.valid && meta.touched,
 					}"
 				/>
-				<div>{{ type }}</div>
 				<template v-if="children && children.length">
 					<component
 						:is="tag"
