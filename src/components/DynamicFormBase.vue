@@ -12,7 +12,6 @@ interface PropsType {
 			name: string;
 			type?: string;
 			label?: string;
-			children?: string;
 			msg?: string;
 			[index: string]: unknown;
 		}[];
@@ -35,8 +34,7 @@ const onSubmit = (values: unknown) => {
 <template>
 	<FormValidate class="flex flex-col gap-4" @submit="onSubmit">
 		<div
-			v-for="{ name, label, children, msg, type, ...attrs } in props.schema
-				.fields"
+			v-for="{ name, label, msg, type, ...attrs } in props.schema.fields"
 			:key="name"
 			class="flex flex-col items-start gap-2"
 		>
@@ -58,16 +56,6 @@ const onSubmit = (values: unknown) => {
 							!meta.valid && meta.touched,
 					}"
 				/>
-				<template v-if="children && children.length">
-					<component
-						:is="tag"
-						v-for="({ tag, text, ...childAttrs }, idx) in children"
-						:key="idx"
-						v-bind="childAttrs"
-					>
-						{{ text }}
-					</component>
-				</template>
 			</FieldValidate>
 			<ErrorMessage v-if="msg" :name="name" class="text-pink-600 text-sm">{{
 				msg
