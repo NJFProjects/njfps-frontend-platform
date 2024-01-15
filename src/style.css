@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+	.field-base {
+		@apply border-cyan-900 focus:border-cyan-500 focus:ring-cyan-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 flex rounded-md border-2 border-solid focus:outline-none focus:ring-1 disabled:shadow-none;
+	}
+}
 /* :root {
 	font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
 	font-size: 16px;
