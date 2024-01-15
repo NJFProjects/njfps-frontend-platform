@@ -21,9 +21,15 @@ interface PropsType {
 
 const props = defineProps<PropsType>();
 
+const emit = defineEmits<{
+	submit: [payload: string];
+}>();
+
 // Need to use defineProps() to get props from parent component for destination
 const onSubmit = (values: unknown) => {
-	console.log(JSON.stringify(values, null, 2));
+	let payload = JSON.stringify(values, null, 2);
+	console.log(payload);
+	emit("submit", payload);
 };
 </script>
 <template>

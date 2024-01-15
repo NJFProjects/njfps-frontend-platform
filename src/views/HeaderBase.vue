@@ -16,7 +16,9 @@ import BaseButton from "../components/BaseButton.vue";
 			<router-link to="/login">
 				<BaseButton color="primary" type="outline">Login</BaseButton>
 			</router-link>
-			<BaseButton color="primary" type="solid">Register</BaseButton>
+			<router-link to="/register">
+				<BaseButton color="primary" type="solid">Register</BaseButton>
+			</router-link>
 		</div>
 	</div>
 </template>
