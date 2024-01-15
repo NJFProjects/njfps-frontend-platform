@@ -6,23 +6,20 @@ import {
 } from "vee-validate";
 import BaseButton from "./BaseButton.vue";
 
-interface Field {
-	as?: string;
-	name?: string;
-	label?: string;
-	children?: string;
-	msg?: string;
-	[index: string]: unknown;
-}
-
-const props = defineProps<{
+interface PropsType {
 	schema: {
 		fields: {
-			type: Field;
-			required: true;
+			name: string;
+			type: string;
+			label?: string;
+			children?: string;
+			msg?: string;
+			[index: string]: unknown;
 		}[];
 	};
-}>();
+}
+
+const props = defineProps<PropsType>();
 
 // Need to use defineProps() to get props from parent component for destination
 const onSubmit = (values: unknown) => {
@@ -32,7 +29,7 @@ const onSubmit = (values: unknown) => {
 <template>
 	<FormValidate class="flex flex-col gap-4" @submit="onSubmit">
 		<div
-			v-for="{ as, name, label, children, msg, ...attrs } in props.schema
+			v-for="{ name, label, children, msg, type, ...attrs } in props.schema
 				.fields"
 			:key="name"
 			class="flex flex-col items-start gap-2"
@@ -42,11 +39,20 @@ const onSubmit = (values: unknown) => {
 			}}</label>
 			<FieldValidate
 				:id="name"
-				:as="as"
+				v-slot="{ meta, field }"
 				:name="name"
 				v-bind="attrs"
-				class="field-base py-3 pl-3 pr-11 flex self-stretch"
 			>
+				<input
+					v-bind="field"
+					:type="type"
+					class="field-base flex self-stretch py-3 pl-3 pr-11"
+					:class="{
+						'border-pink-500 text-pink-600 focus:border-pink-500 focus:ring-pink-500':
+							!meta.valid,
+					}"
+				/>
+				<div>{{ type }}</div>
 				<template v-if="children && children.length">
 					<component
 						:is="tag"
